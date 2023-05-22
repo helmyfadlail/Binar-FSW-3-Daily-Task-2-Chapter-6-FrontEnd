@@ -22,13 +22,19 @@ const Login = () => {
     baseApi
       .post("/users/login", payload)
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        console.log(res.data.user);
+        if (res.status !== 200) {
+          alert("Your username or password is wrong");
+        } else {
+          localStorage.setItem("token", res.data.token);
+          console.log(res.data.user);
+          setTimeout(() => {
+            navigate("/");
+          }, 3000);
+        }
       })
       .catch((err) => {
         console.log(err.message);
       });
-    navigate("/");
   };
 
   return (

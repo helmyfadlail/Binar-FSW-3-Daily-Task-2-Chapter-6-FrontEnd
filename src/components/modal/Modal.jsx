@@ -1,7 +1,20 @@
 import React from "react";
 import { SubmitButton } from "../custom_button/Button";
+import baseApi from "../../api/baseApi";
 
 const Modal = (props) => {
+  const token = localStorage.getItem("token");
+  const handleDelete = async () => {
+    const res = await baseApi.delete(`/products/${props.id}`, { headers: { token, validateStatus: false } });
+    if (res.status !== 200) {
+      alert(res.data.message);
+      return;
+    }
+    console.log(res.data);
+    alert(res.data.message);
+    window.location.reload();
+  };
+  // console.log(props.id);
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -34,7 +47,9 @@ const Modal = (props) => {
               </svg>
               <h3 className="mb-5 text-lg font-normal text-[#F8F6F4] dark:text-[#0B2447]">Are you sure you want to delete this product?</h3>
               <div className="flex gap-4 justify-center">
-                <SubmitButton className="text-[#F8F6F4] bg-red-600 hover:bg-red-700 focus:ring-red-300">Yes, I'm sure</SubmitButton>
+                <SubmitButton onClick={handleDelete} className="text-[#F8F6F4] bg-red-600 hover:bg-red-700 focus:ring-red-300">
+                  Yes, I'm sure
+                </SubmitButton>
                 <SubmitButton
                   type="button"
                   onClick={() => props.setModal(false)}

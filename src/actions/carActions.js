@@ -8,12 +8,12 @@ export const DELETE_CAR = "DELETE_CAR";
 
 export const getCarsList = () => {
   return async (dispatch) => {
-    const res = await baseApi.get("/cars");
+    const res = await baseApi.get("/products");
     try {
       dispatch({
         type: GET_CARS_LIST,
         payload: {
-          data: res.data,
+          data: res.data.cars,
           errorMessage: false,
         },
       });
@@ -31,12 +31,12 @@ export const getCarsList = () => {
 
 export const getCarDetail = (id) => {
   return async (dispatch) => {
-    const res = await baseApi.get(`/cars/${id}`);
+    const res = await baseApi.get(`/products/${id}`);
     try {
       dispatch({
         type: GET_CAR_DETAIL,
         payload: {
-          data: res.data,
+          data: res.data.car,
           errorMessage: false,
         },
       });
@@ -54,12 +54,13 @@ export const getCarDetail = (id) => {
 
 export const postCarCreate = (data) => {
   return async (dispatch) => {
-    const res = await baseApi.post(`/cars`, data);
+    const token = localStorage.getItem("token");
+    const res = await baseApi.post(`/products`, data, { headers: { "Content-Type": "multipart/form-data", token } });
     try {
       dispatch({
         type: POST_CAR_CREATE,
         payload: {
-          data: res.data,
+          data: res.data.car,
           errorMessage: false,
         },
       });
@@ -77,7 +78,8 @@ export const postCarCreate = (data) => {
 
 export const putCarUpdate = (data, id) => {
   return async (dispatch) => {
-    const res = await baseApi.put(`/cars/${id}`, data);
+    const token = localStorage.getItem("token");
+    const res = await baseApi.put(`/products/${id}`, data, { headers: { "Content-Type": "multipart/form-data", token } });
     try {
       dispatch({
         type: PUT_CAR_EDIT,
