@@ -5,7 +5,7 @@ import baseApi from "../../api/baseApi";
 const Modal = (props) => {
   const token = localStorage.getItem("token");
   const handleDelete = async () => {
-    const res = await baseApi.delete(`/products/${props.id}`, { headers: { token, validateStatus: false } });
+    const res = await baseApi.delete(`/products/${props.id}`, { headers: { authorization: `Bearer ${token}` } });
     if (res.status !== 200) {
       alert(res.data.message);
       return;

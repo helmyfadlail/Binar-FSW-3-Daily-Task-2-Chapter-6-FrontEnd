@@ -55,7 +55,7 @@ export const getCarDetail = (id) => {
 export const postCarCreate = (data) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
-    const res = await baseApi.post(`/products`, data, { headers: { "Content-Type": "multipart/form-data", token } });
+    const res = await baseApi.post(`/products`, data, { headers: { "Content-Type": "multipart/form-data", authorization: `Bearer ${token}` } });
     try {
       dispatch({
         type: POST_CAR_CREATE,
@@ -79,7 +79,7 @@ export const postCarCreate = (data) => {
 export const putCarUpdate = (data, id) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
-    const res = await baseApi.put(`/products/${id}`, data, { headers: { "Content-Type": "multipart/form-data", token } });
+    const res = await baseApi.put(`/products/${id}`, data, { headers: { "Content-Type": "multipart/form-data", authorization: `Bearer ${token}` } });
     try {
       dispatch({
         type: PUT_CAR_EDIT,
