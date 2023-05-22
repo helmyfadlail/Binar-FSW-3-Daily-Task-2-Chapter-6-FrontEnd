@@ -1,14 +1,14 @@
 import React from "react";
 import { Spin as Hamburger } from "hamburger-react";
 import { SubmitButton } from "./Button";
-import { useNavigate } from "react-router-dom";
 
 const LogoutButton = () => {
-  const navigate = useNavigate();
   const [logoutBtn, setLogoutBtn] = React.useState("opacity-0 hidden");
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 3000);
   };
   return (
     <>

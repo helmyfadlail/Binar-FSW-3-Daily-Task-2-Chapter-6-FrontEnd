@@ -30,7 +30,7 @@ const ListCars = (props) => {
             key={item.id}
             className="max-w-xs duration-200 flex-grow transition-colors bg-[#C4DFDF] border border-gray-200 rounded-md shadow dark:bg-[#19376D] dark:border-gray-700"
           >
-            <Link to={`/cars/detail/${item.id}`} className="h-[215px]">
+            <Link to={`/cars/detail/${item.id}`} className="h-[200px]">
               <img src={item.imageUrl} className="w-full h-full max-w-[318px] max-h-[210px] object-cover" alt="" />
             </Link>
             <div className="px-8 pb-5">
