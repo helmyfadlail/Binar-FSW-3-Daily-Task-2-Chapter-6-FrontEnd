@@ -5,7 +5,7 @@ const Button = (props) => {
   return (
     <Link
       to={props.href}
-      className={`${props.className} whitespace-nowrap focus:ring-4 duration-300 font-medium rounded-lg text-md px-5 py-2.5 focus:outline-none`}
+      className={`${props.className} whitespace-nowrap focus:ring-4 duration-300 font-semibold rounded-lg text-base px-5 py-3 focus:outline-none`}
     >
       {props.children}
     </Link>
@@ -19,7 +19,7 @@ export const SubmitButton = (props) => {
     <button
       type="submit"
       onClick={props.onClick ? () => props.onClick() : null}
-      className={`${props.className} whitespace-nowrap focus:ring-4 duration-300 font-medium rounded-lg text-md px-5 py-2.5 focus:outline-none`}
+      className={`${props.className} whitespace-nowrap focus:ring-4 duration-300 font-semibold rounded-lg text-base px-5 py-3 focus:outline-none`}
     >
       {props.children}
     </button>

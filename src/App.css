@@ -25,7 +25,7 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="file"]::-webkit-file-upload-button {
   color: #f8f6f4;
   background-color: #576cbc;
-  padding: 0.625rem;
+  padding: 14px 10px;
   outline: none;
   border: none;
 }

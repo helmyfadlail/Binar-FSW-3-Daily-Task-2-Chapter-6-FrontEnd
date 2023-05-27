@@ -60,7 +60,7 @@ const Home = () => {
             <select
               value={filteredCar}
               onChange={(e) => setFilteredYear(e.target.value)}
-              className="bg-[#A5D7E8] border border-[#576CBC] text-[#0B2447] font-semibold text-md rounded-lg focus:ring-[#576CBCb3] focus:border-[#576CBCb3] block w-full py-2.5 px-3"
+              className="duration-300 text-[#F8F6F4] bg-[#576CBC] font-semibold text-md rounded-lg block w-full py-3 px-3 dark:text-[#0B2447] dark:bg-[#A5D7E8]"
             >
               <option>Filtered Cars</option>
               <option value="All">All</option>
@@ -72,7 +72,13 @@ const Home = () => {
             </select>
           </div>
         </div>
-        <ListCars items={filteredYear === "All" ? carsData : filteredCar} modal={openUpdateModal} />
+        {carsData !== null ? (
+          <ListCars items={filteredYear === "All" ? carsData : filteredCar} modal={openUpdateModal} />
+        ) : (
+          <div className="mt-10 text-center">
+            <h1 className="duration-300 text-3xl font-semibold text-[#0B2447] dark:text-[#F8F6F4]">No cars found in database</h1>
+          </div>
+        )}
       </div>
     </section>
   );
